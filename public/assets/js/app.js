@@ -1,15 +1,17 @@
 const setInfoModal = (nombre, balance, id) => {
   $("#nombreEdit").val(nombre);
   $("#balanceEdit").val(balance);
-  $("#editButton").attr("onclick", `editUsuario('${id}')`);
+  //"onclick", `editUsuario('${id}')`
+  $("#editButton").attr("data-id", id);
 };
 
 const editUsuario = async (id) => {
   const name = $("#nombreEdit").val();
   const balance = $("#balanceEdit").val();
   try {
-    const { data } = await axios.put(`http://localhost:3000/usuario?id=${id}`, {
-      name,
+    //`http://localhost:3000/usuario?id=${id}`
+    const { data } = await axios.put(`http://localhost:3000/usuario/${id}`, {
+      nombre,
       balance,
     });
     $("#exampleModal").modal("hide");
@@ -100,7 +102,8 @@ const getUsuarios = async () => {
 };
 
 const eliminarUsuario = async (id) => {
-  const response = await fetch(`http://localhost:3000/usuario?id=${id}`, {
+  //`http://localhost:3000/usuario?id=${id}`
+  const response = await fetch(`http://localhost:3000/usuario/${id}`, {
     method: "DELETE",
   });
   getUsuarios();
