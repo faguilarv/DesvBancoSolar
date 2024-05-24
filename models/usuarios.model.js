@@ -22,7 +22,7 @@ const createUsuarios = async ({ nombre, balance }) => {
   return rows[0];
 };
 //Editamos usuario en la baseDatos
-const UpdateUser = async (usuario) => {
+const UpdateUsuario = async (usuario) => {
   const query = {
     text: `
     UPDATE USUARIOS SET NOMBRE = $2,
@@ -55,5 +55,5 @@ export const UsuarioModel = {
   findAllUsuarios,
   createUsuarios,
   removeUser,
-  UpdateUser,
+  UpdateUsuario,
 };

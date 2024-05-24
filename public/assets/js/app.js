@@ -1,12 +1,13 @@
 const setInfoModal = (nombre, balance, id) => {
   $("#nombreEdit").val(nombre);
   $("#balanceEdit").val(balance);
-  //"onclick", `editUsuario('${id}')`
-  $("#editButton").attr("data-id", id);
+  // "data-id", id
+  $("#editButton").attr("onclick", `editUsuario('${id}')`);
 };
 
 const editUsuario = async (id) => {
-  const name = $("#nombreEdit").val();
+  //name
+  const nombre = $("#nombreEdit").val();
   const balance = $("#balanceEdit").val();
   try {
     //`http://localhost:3000/usuario?id=${id}`
