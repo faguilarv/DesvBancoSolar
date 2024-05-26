@@ -68,9 +68,9 @@ $("form:last").submit(async (e) => {
     });
     const data = await response.json();
     location.reload();
-  } catch (e) {
-    console.log(e);
-    alert("Algo salió mal..." + e);
+  } catch (error) {
+    console.log(error);
+    alert("Algo salió mal..." + error);
   }
 });
 
