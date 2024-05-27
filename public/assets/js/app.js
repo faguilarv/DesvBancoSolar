@@ -44,12 +44,15 @@ $("form:first").submit(async (e) => {
     alert("Algo salió mal ..." + e);
   }
 });
-
+//aqui revisar
 $("form:last").submit(async (e) => {
   e.preventDefault();
-  let emisor = $("form:last select:first").val();
-  let receptor = $("form:last select:last").val();
+  let emisor = +$("form:last select:first").val();
+  let receptor = +$("form:last select:last").val();
   let monto = $("#monto").val();
+  console.log("Emisor:", emisor);
+  console.log("Receptor:", receptor);
+  console.log("Monto:", monto);
   if (!monto || !emisor || !receptor) {
     alert("Debe seleccionar un emisor, receptor y monto a transferir");
     return false;

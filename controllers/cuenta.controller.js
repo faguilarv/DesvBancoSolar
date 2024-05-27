@@ -15,7 +15,13 @@ const getAllTransfer = async (req, res) => {
 
 const createTransfer = async (req, res) => {
   try {
-    const { emisor, receptor, monto } = req.body;
+    //cambio a let la const
+    let { emisor, receptor, monto } = req.body;
+    console.log("Emisor:", emisor);
+    console.log("Receptor:", receptor);
+    console.log("Monto:", monto);
+    emisor = parseInt(emisor);
+    receptor = parseInt(receptor);
 
     const transferencia = await CuentaModel.createTransferencia(
       emisor,
