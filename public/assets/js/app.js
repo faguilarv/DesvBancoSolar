@@ -47,8 +47,8 @@ $("form:first").submit(async (e) => {
 //aqui revisar
 $("form:last").submit(async (e) => {
   e.preventDefault();
-  let emisor = +$("form:last select:first").val();
-  let receptor = +$("form:last select:last").val();
+  let emisor = $("form:last select:first").val();
+  let receptor = $("form:last select:last").val();
   let monto = $("#monto").val();
   console.log("Emisor:", emisor);
   console.log("Receptor:", receptor);
@@ -100,8 +100,8 @@ const getUsuarios = async () => {
               </tr>
          `);
 
-    $("#emisor").append(`<option value="${c.nombre}">${c.nombre}</option>`);
-    $("#receptor").append(`<option value="${c.nombre}">${c.nombre}</option>`);
+    $("#emisor").append(`<option value="${c.id}">${c.nombre}</option>`);
+    $("#receptor").append(`<option value="${c.id}">${c.nombre}</option>`);
   });
 };
 
@@ -117,13 +117,14 @@ const getTransferencias = async () => {
   const { data } = await axios.get("http://localhost:3000/transferencias");
   $(".transferencias").html("");
 
+  //aqui se recibia un array y se paso un objeto de la baseDatos
   data.forEach((t) => {
     $(".transferencias").append(`
-       <tr>
-         <td> ${formatDate(t[4])} </td>
-         <td> ${t[1]} </td>
-         <td> ${t[2]} </td>
-         <td> ${t[3]} </td>
+       <tr>       
+         <td> ${formatDate(t.fecha)} </td>
+         <td> ${t["emisor_nombre"]} </td>
+         <td> ${t.receptor_nombre} </td>
+         <td> ${t.monto} </td>
        </tr>
      `);
   });
