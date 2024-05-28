@@ -93,9 +93,9 @@ const getUsuarios = async () => {
                     data-toggle="modal"
                     data-target="#exampleModal"
                     onclick="setInfoModal('${c.nombre}', '${c.balance}', '${c.id}')"
-                  >
+                  ><i class="fa-solid fa-file-pen"></i>
                     Editar</button
-                  ><button class="btn btn-danger" onclick="eliminarUsuario('${c.id}')">Eliminar</button>
+                  ><button class="btn btn-danger" onclick="eliminarUsuario('${c.id}')"><i class="fa-solid fa-trash-can"></i> Eliminar</button>
                 </td>
               </tr>
          `);

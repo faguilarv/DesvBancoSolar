@@ -1,8 +1,12 @@
 
 
 body {
-    background: #e5e1dd;
-  }
+  background: #e5e1dd;
+  background-image: url(../img/fondo.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
   form {
     padding: 15px;
     background: #f8f9fa;
