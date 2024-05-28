@@ -7,7 +7,10 @@ const getAllTransfer = async (req, res) => {
     return res.json(transferencia);
   } catch (error) {
     console.log(error);
-    return res.status(500)({ ok: false, msg: "Se ha producido un error" });
+    const { code, msg } = handleError(error);
+    return res
+      .status(code)
+      .json({ ok: false, msg: " se a detectado un error " });
   }
 };
 
@@ -15,13 +18,10 @@ const getAllTransfer = async (req, res) => {
 
 const createTransfer = async (req, res) => {
   try {
-    //cambio a let la const
-    let { emisor, receptor, monto } = req.body;
+    const { emisor, receptor, monto } = req.body;
     console.log("Emisor:", emisor);
     console.log("Receptor:", receptor);
     console.log("Monto:", monto);
-    emisor = parseInt(emisor);
-    receptor = parseInt(receptor);
 
     const transferencia = await CuentaModel.createTransferencia(
       emisor,
@@ -31,8 +31,9 @@ const createTransfer = async (req, res) => {
     return res.status(201).json(transferencia);
   } catch (error) {
     console.log(error);
+    const { code, msg } = handleError(error);
     return res
-      .status(500)
+      .status(code)
       .json({ ok: false, msg: " se a detectado un error al transferir" });
   }
 };
